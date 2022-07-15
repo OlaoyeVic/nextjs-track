@@ -1,18 +1,24 @@
-import { ApolloProvider } from '@apollo/client'
 import Head from 'next/head'
-import { useApollo } from '../lib/apollo'
 import '../styles/globals.css'
+import CartContext from '../components/context/CartContext'
+import { useState } from 'react'
+import Navbar from '../components/Navbar'
 
 function MyApp({ Component, pageProps }) {
-  const apolloClient = useApollo(pageProps.initialApolloState)
+  const [items, setItems] = useState({})
   
   return (
-    <ApolloProvider client={apolloClient}>
+    <>
       <Head>
         <link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet' />
       </Head>
-      <Component {...pageProps} />
-    </ApolloProvider>
+      <CartContext.Provider value={{items, setItems}}>
+        <Navbar />
+        <div className="w-9/12 m-auto pt-10">
+          <Component {...pageProps} />
+        </div>
+      </CartContext.Provider>
+    </>
   )
 }
 export default MyApp
