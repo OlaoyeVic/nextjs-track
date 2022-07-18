@@ -1,10 +1,14 @@
 import Link from 'next/link'
-import { useContext } from 'react'
-import ShoppingCartContext from './context/CartContext'
+import { useSelector, shallowEqual } from 'react-redux'
+
+function useGlobalItems() {
+    return useSelector((state) => state, shallowEqual)
+}
 
 const Navbar = () => {
-    const { items } = useContext(ShoppingCartContext)
-    const totalItemsAmmount = Object.values(items).reduce((x, y) => x + y, 0)
+    const items = useGlobalItems()
+    const totalItemsAmmount = Object.keys(items).map((key) => items[key]).reduce((x, y) => x + y, 0)
+
     return (
         <div className='w-full bg-purple-600 p-4 text-white'>
             <div className="w-9/12 m-auto flex justify-between">
