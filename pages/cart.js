@@ -9,19 +9,14 @@ function getFullItem(id) {
     const idx = data.findIndex((item) => item.id === id)
     return data[idx]
 }
-// console.log(getFullItem('9126-b921').price)
 
 const Cart = () => {
-    console.log(getFullItem('9126-b921').price)
     const items = useGlobalItems();
-    console.log(items)
-    const total = Object?.keys(items)?.map((id) => getFullItem(id)?.price * items[id])?.reduce((x, y) => x+y, 0);
-    console.log(total)
-    const amounts = Object?.keys(items).map((id) => {
+    const total = Object.keys(items).map((id) => getFullItem(id)?.price * items[id]).reduce((x, y) => x+y, 0);
+    const amounts = Object.keys(items).map((id) => {
         const item = getFullItem(id)
-        return { item, amount: item[id]}
+        return { item, amount: items[id]}
     })
-    // console.log(amounts)
 
     return (
         <div>
