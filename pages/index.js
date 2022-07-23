@@ -1,13 +1,22 @@
-import ProductCard from '../components/ProductCard'
-import products from '../data/items'
+import { VStack, Button, useColorMode, Text, Box, Grid, GridItem } from "@chakra-ui/react"
+import UserCard from "../components/UserCard"
+import users from "../data/users"
 
 const Home = () => {
+    const { colorMode, toggleColorMode } = useColorMode()
     return (
-        <div className="grid grid-cols-4 gap-4">
-            {products?.map((product) => (
-                <ProductCard key={product.id} {...product} />
-            ))}
-        </div>
+        <Box>
+            <Text fontSize="xxx-large" fontWeight="extrabold" textAlign="center" marginTop="9">
+                ACME Corporation Employees
+            </Text>
+            <Grid gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} gridGap="10" padding="10">
+                {users.map((user) => (
+                    <GridItem key={user.id}>
+                        <UserCard {...user} />
+                    </GridItem>
+                ))}
+            </Grid>
+        </Box>
     )
 }
 export default Home
