@@ -1,22 +1,20 @@
-import { VStack, Button, useColorMode, Text, Box, Grid, GridItem } from "@chakra-ui/react"
 import UserCard from "../components/UserCard"
 import users from "../data/users"
 
 const Home = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
     return (
-        <Box>
-            <Text fontSize="xxx-large" fontWeight="extrabold" textAlign="center" marginTop="9">
+        <div className="sm:w-9/12 sm:m-auto pt-16 pb-16">
+            <h1 className="dark:text-white text-5xl font-bold text-center">
                 ACME Corporation Employees
-            </Text>
-            <Grid gridTemplateColumns={['1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)']} gridGap="10" padding="10">
-                {users.map((user) => (
-                    <GridItem key={user.id}>
-                        <UserCard {...user} />
-                    </GridItem>
+            </h1>
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-3 mt-14 ml-8 mr-8 sm:mr-0 sm:ml-0">
+                {users?.map((user) => (
+                    <div key={user.id}>
+                        <UserCard {...user}/>
+                    </div>
                 ))}
-            </Grid>
-        </Box>
+            </div>
+        </div>
     )
 }
 export default Home

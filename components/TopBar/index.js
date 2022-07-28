@@ -1,22 +1,12 @@
-import { Box, Button, useColorMode } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons"
+import ThemeSwitch from '../ThemeSwitch'
 
 const TopBar = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
-    const ColorModeIcon = colorMode === 'light' ? SunIcon : MoonIcon
-
     return (
-        <Box width="100%" padding="1" backgroundColor="whatsapp.500">
-            <Button 
-                aria-label="UI Theme" 
-                leftIcon={<ColorModeIcon />} 
-                onClick={toggleColorMode} 
-                size="xs" marginRight="2" 
-                borderRadius="sm"
-            >
-                Toggle Theme
-            </Button>
-        </Box>
+        <div className='w-full p-2 bg-green 500'>
+            <div className='w-10/12 m-auto'>
+                <ThemeSwitch />
+            </div>
+        </div>
     )
 }
 export default TopBar
