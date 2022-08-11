@@ -8,6 +8,8 @@ export function getServerSideProps(req) {
 
 export default function GreetUser({ user }) {
     return (
-        <div>Hello {user}!</div>
+        <div>
+            <h1>Hello {user} !</h1>
+        </div>
     )
 }
